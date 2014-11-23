@@ -24,10 +24,16 @@ class Link(models.Model):
     link = models.URLField()
     image = models.URLField(default="")
 
+    def __str__(self):
+        return self.title
+
 class Note(models.Model):
     title = models.CharField(max_length=1024)
     summary = models.CharField(max_length=1024)
     content = models.TextField(default="")
+
+    def __str__(self):
+        return self.title
 
 class Item(models.Model):
     group = models.ForeignKey(Group)
@@ -38,4 +44,10 @@ class Item(models.Model):
     create_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now=True)
     tags = TaggableManager(blank=True, related_name="item_tags")
+
+    class Meta:
+        unique_together = ('content_type','object_id')
+
+    def __str__(self):
+        return self.item.title
 
