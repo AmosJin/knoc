@@ -1,0 +1,33 @@
+*.pyc
+*.svn
+*.swo
+*.swp
+*.orig
+*.compress.less
+*.compress.js
+*.compress.css
+*.*.css
+*.*.js
+
+# emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list
+tramp
+.\#*
+
+#Mac desktop service file
+.DS_Store
+
+shanbay/log/*
+node_modules/*
+shanbay/server_info.py
+shanbay/setting_conf/*.py
+compile_css.sh
+login_aws.sh
+login_server.sh
+quotes.tsv
+static_versions.py
