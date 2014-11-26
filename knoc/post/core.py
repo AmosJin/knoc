@@ -11,7 +11,8 @@ def update_item(instance, user_id, group_id, tags=""):
 
     item.author_id = user_id
     item.group_id = group_id
-    item.tags = tags
     item.save()
+    if tags:
+        item.tags.set(*tags.split(","))
     return item
 

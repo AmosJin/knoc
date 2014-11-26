@@ -59,7 +59,7 @@ class Item(models.Model):
 
     @property
     def tag_list(self):
-        return self.tags
+        return self.tags.names()
 
     class Meta:
         unique_together = ('content_type','object_id')
