@@ -11,7 +11,7 @@ from django.core.cache import cache
 from api.response import SuccessResult, FailedResult, ForbiddenResult
 from api.views import APIView, api_permission_required
 
-from post.models import Item, Link
+from post.models import Group, Item, Link
 from post.forms import  LinkForm, NoteForm
 from post import core
 
@@ -22,6 +22,12 @@ class TestView(APIView):
         link = Link.objects.all()[0]
         data = self.serialize(link)
         return SuccessResult(data=data)
+
+class GroupView(APIView):
+    http_method_name = ('get',)
+    def get(self, request):
+        groups = Group.objects.all()
+        return SuccessResult(data=self.serialize(groups))
 
 class ItemView(APIView):
     http_method_name = ('get', 'post',)
