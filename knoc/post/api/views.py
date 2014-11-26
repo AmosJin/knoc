@@ -12,6 +12,8 @@ from api.response import SuccessResult, FailedResult, ForbiddenResult
 from api.views import APIView, api_permission_required
 
 from post.models import Item, Link
+from post.forms import  LinkForm, NoteForm
+from post import core
 
 class TestView(APIView):
     http_method_name = ('get',)
@@ -20,3 +22,22 @@ class TestView(APIView):
         link = Link.objects.all()[0]
         data = self.serialize(link)
         return SuccessResult(data=data)
+
+class ItemView(APIView):
+    http_method_name = ('post',)
+
+    def post(self, request, item_type, group_id):
+        forms = {
+                "link": LinkForm,
+                "note": NoteForm
+        }
+        data = self.data(request)
+        user = request.user
+        form = forms.get(item_type)(data)
+        if form.is_valid():
+            link = form.save()
+            item = core.update_item(link, user_id=user.pk, group_id=group_id)
+            return SuccessResult(data=self.serialize(item))
+
+        return FailedResult(msg=form.errors)
+
