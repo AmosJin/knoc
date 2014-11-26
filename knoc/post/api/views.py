@@ -24,7 +24,12 @@ class TestView(APIView):
         return SuccessResult(data=data)
 
 class ItemView(APIView):
-    http_method_name = ('post',)
+    http_method_name = ('get', 'post',)
+
+    def get(self, request, group_id):
+        total, ipp,  items = self.pagination(Item.objects.filter(group__id=group_id))
+        items = [self.serialize(item) for item in items]
+        return SuccessResult(data={'total':total, 'ipp':ipp, 'items':items})
 
     def post(self, request, item_type, group_id):
         forms = {
