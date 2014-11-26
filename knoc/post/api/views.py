@@ -32,11 +32,12 @@ class ItemView(APIView):
                 "note": NoteForm
         }
         data = self.data(request)
+        tags = data["tags"]
         user = request.user
         form = forms.get(item_type)(data)
         if form.is_valid():
             link = form.save()
-            item = core.update_item(link, user_id=user.pk, group_id=group_id)
+            item = core.update_item(link, user_id=user.pk, group_id=group_id, tags=tags)
             return SuccessResult(data=self.serialize(item))
 
         return FailedResult(msg=form.errors)

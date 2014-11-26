@@ -57,12 +57,16 @@ class Item(models.Model):
     def item_type(self):
         return self.item.item_type
 
+    @property
+    def tag_list(self):
+        return self.tags
+
     class Meta:
         unique_together = ('content_type','object_id')
 
     class Manifest:
         excludes = ("content_type",)
-        properties = ("item_type",)
+        properties = ("item_type", "tag_list")
 
     def __str__(self):
         return self.item.title
