@@ -58,6 +58,14 @@ class Item(models.Model):
         return self.item.item_type
 
     @property
+    def author_info(self):
+        author = self.author
+        return {
+                "id": author.pk,
+                "username": author.username
+                }
+
+    @property
     def tag_list(self):
         return self.tags.names()
 
@@ -65,8 +73,8 @@ class Item(models.Model):
         unique_together = ('content_type','object_id')
 
     class Manifest:
-        excludes = ("content_type",)
-        properties = ("item_type", "tag_list")
+        excludes = ("content_type","author_id")
+        properties = ("item_type", "tag_list", "author_info")
 
     def __str__(self):
         return self.item.title
