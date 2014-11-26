@@ -13,6 +13,10 @@ def update_item(instance, user_id, group_id, tags=""):
     item.group_id = group_id
     item.save()
     if tags:
-        item.tags.set(*tags.split(","))
+        tags = tags.split(",")
+        if len(tags) == 1:
+            tags = tags[0].split()
+
+        item.tags.set(*tags)
     return item
 
