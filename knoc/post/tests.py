@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 from post.models import Group, UserGroup, Link, Note
-from post.core import update_item
+from post import core
 
 
 class BasicTest(TestCase):
@@ -15,6 +15,42 @@ class BasicTest(TestCase):
         Group.objects.all().delete()
 
  
+class LinkInfoTest(BasicTest):
+    def test_get_encoding(self):
+        content = '''<!DOCTYPE html>
+                  <html id="spLianghui">\n<head>\n<meta http-equiv="Content-Type" 
+                  content="text/html; charset=gb2312" /
+                  '''
+
+        encode = core.get_encoding(content)
+        self.assertEqual(encode, "gb2312")
+
+    def test_get_domain(self):
+        domain = core.get_url_domain("http://www.shanbay.com/test/more")
+        self.assertEqual("http://www.shanbay.com/", domain)
+
+        domain = core.get_url_domain("http://www.scipark.net/news/sci_xp542.html")
+        self.assertEqual("http://www.scipark.net/", domain)
+
+    def test_link_info(self):
+        content = '''
+            <html>
+                <head>
+                    <title>title</title>
+                    <meta name="copyright" content="shanbay">
+                    <meta name="description" content="description">
+                </head>
+                <body>
+                    <div>some text</div>
+                    <img src="http://qstatic.shanbay.com/static/img/landing_page_logo.png"/>
+                </body>
+            </html>
+        '''
+        data = core.get_link_info("http://www.shanbay.com", content)
+        self.assertEqual("title", data["title"])
+        self.assertEqual("description", data["description"])
+        self.assertEqual("http://qstatic.shanbay.com/static/img/landing_page_logo.png", data["image"])
+
 class ItemUpdateTest(BasicTest):
     def setUp(self):
         super(ItemUpdateTest, self).setUp()
@@ -26,10 +62,10 @@ class ItemUpdateTest(BasicTest):
         link = Link(title="link title", description="some description", 
                 link="http://www.shanbay.com", image="http://qstatic.shanbay.com/static//img/logo2.png")
         link.save()
-        item = update_item(link, user_id=user.pk, group_id=group.pk)
+        item = core.update_item(link, user_id=user.pk, group_id=group.pk)
         self.assertEqual(item.object_id, link.pk)
 
     def test_update_item(self):
         link = Link.objects.get(id=1)
-        item = update_item(link, user_id=self.user.pk, group_id=self.group.id)
+        item = core.update_item(link, user_id=self.user.pk, group_id=self.group.id)
         self.assertEqual(item.object_id, link.id)

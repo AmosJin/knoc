@@ -1,4 +1,8 @@
 import datetime
+import requests
+from io import StringIO
+from requests.exceptions import Timeout, ConnectionError, RequestException
+from lxml import etree
 
 from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext as _
@@ -8,11 +12,11 @@ from django.conf import settings
 from django.template import loader, RequestContext
 from django.core.cache import cache
 
-from api.response import SuccessResult, FailedResult, ForbiddenResult
+from api.response import Result, SuccessResult, FailedResult, ForbiddenResult
 from api.views import APIView, api_permission_required
 
 from post.models import Group, Item, Link
-from post.forms import  LinkForm, NoteForm
+from post.forms import  LinkForm, LinkURLForm, NoteForm
 from post import core
 
 class TestView(APIView):
@@ -53,3 +57,29 @@ class ItemView(APIView):
 
         return FailedResult(msg=form.errors)
 
+
+class LinkView(APIView):
+    http_method_name = ('post')
+
+    def post(self, request, group_id):
+        data = self.data(request)
+        user = request.user
+        link = data.get("link")
+        try:
+            r = requests.get(link, timeout=6)
+        except (Timeout, ConnectionError, RequestException):
+            return FailedResult(msg="connection error")
+
+        content = r.content
+        encoding = core.get_encoding(content)
+        encoding = encoding or "utf8"
+        data = core.get_link_info(link, content, encoding)
+        form = LinkForm(data)
+        if form.is_valid:
+            link = form.save()
+        else:
+            return FailedResult(msg=form.errors)
+
+        item = core.update_item(link, user_id=user.pk, group_id=group_id)
+
+        return Result(data=self.serialize(link))

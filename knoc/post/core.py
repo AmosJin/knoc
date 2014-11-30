@@ -1,4 +1,8 @@
+import re
 from django.contrib.contenttypes.models import ContentType
+from lxml import etree
+from io import StringIO
+from urlparse import urlparse
 
 
 def update_item(instance, user_id, group_id, tags=""):
@@ -19,4 +23,43 @@ def update_item(instance, user_id, group_id, tags=""):
 
         item.tags.set(*tags)
     return item
+
+def get_encoding(content):
+    match = re.search("charset=([a-z0-9]+)\"", content)
+    if match:
+        return match.group(1)
+    return None
+
+
+def get_url_domain(url):
+    parsed_uri = urlparse(url)
+    domain = '{uri.scheme}://{uri.netloc}/'.format(uri=parsed_uri)
+    return domain
+
+def get_link_info(link, content, encoding="utf8"):
+    content = content.decode(encoding)
+    parser = etree.HTMLParser()
+    tree = etree.parse(StringIO(content), parser)
+    head = tree.find('head')
+    title = head.find('title')
+    title = title is not None and title.text or ""
+    metas = head.findall('meta')
+    description = ""
+    for meta in metas:
+        if meta.get('name') == "description":
+            description = meta.get("content")
+    data = {"title":title, "description":description}
+    for image in tree.iter(tag="img"):
+        image = image.get('src')
+        if image.startswith("/"):
+            domain = get_url_domain(link)
+            if domain.endswith("/"):
+                domain = domain[:-1]
+            image = domain + image
+        if not image.startswith("http"):
+            image = "".join([link, image])
+        data["image"] =  image
+        break
+    data["link"] = link
+    return data
 

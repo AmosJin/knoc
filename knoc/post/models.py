@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
-
 from taggit.managers import TaggableManager
 
 class Group(models.Model):
@@ -20,9 +19,9 @@ class UserGroup(models.Model):
 
 class Link(models.Model):
     title = models.CharField(max_length=1024)
-    description = models.TextField(default="")
+    description = models.TextField(default="", blank=True)
     link = models.URLField()
-    image = models.URLField(default="")
+    image = models.URLField(default="", blank=True)
 
     def __str__(self):
         return self.title
@@ -33,7 +32,7 @@ class Link(models.Model):
 
 class Note(models.Model):
     title = models.CharField(max_length=1024)
-    summary = models.CharField(max_length=1024)
+    summary = models.CharField(max_length=1024, default="")
     content = models.TextField(default="")
 
     def __str__(self):
