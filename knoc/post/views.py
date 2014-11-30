@@ -11,7 +11,7 @@ from post.forms import NoteForm, LinkForm
 
 @login_required
 def home(request):
-    context = RequestContext(request)
+    context = RequestContext(request, {"request": request})
     return render('post/home.html', context)
 
 
