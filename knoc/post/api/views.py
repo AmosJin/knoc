@@ -41,23 +41,6 @@ class ItemView(APIView):
         items = [self.serialize(item) for item in items]
         return SuccessResult(data={'total':total, 'ipp':ipp, 'items':items})
 
-    def post(self, request, item_type, group_id):
-        forms = {
-                "link": LinkForm,
-                "note": NoteForm
-        }
-        data = self.data(request)
-        tags = data["tags"]
-        user = request.user
-        form = forms.get(item_type)(data)
-        if form.is_valid():
-            link = form.save()
-            item = core.update_item(link, user_id=user.pk, group_id=group_id, tags=tags)
-            return SuccessResult(data=self.serialize(item))
-
-        return FailedResult(msg=form.errors)
-
-
 class LinkView(APIView):
     http_method_name = ('post')
 
@@ -75,11 +58,27 @@ class LinkView(APIView):
         encoding = encoding or "utf8"
         data = core.get_link_info(link, content, encoding)
         form = LinkForm(data)
-        if form.is_valid:
+        if form.is_valid():
             link = form.save()
         else:
             return FailedResult(msg=form.errors)
 
         item = core.update_item(link, user_id=user.pk, group_id=group_id)
 
-        return Result(data=self.serialize(link))
+        return Result(data=self.serialize(item))
+
+class NoteView(APIView):
+    http_method_name = ('post')
+
+    def post(self, request, group_id):
+        data = self.data(request)
+        user = request.user
+
+        form = NoteForm(data)
+        if form.is_valid():
+            note = form.save()
+        else:
+            return FailedResult(msg=form.errors)
+
+        item = core.update_item(note, user_id=user.pk, group_id=group_id)
+        return Result(data=self.serialize(item))
