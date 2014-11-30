@@ -34,7 +34,7 @@ class GroupView(APIView):
         return SuccessResult(data=self.serialize(groups))
 
 class ItemView(APIView):
-    http_method_name = ('get', 'post',)
+    http_method_name = ('get', )
 
     def get(self, request, group_id):
         total, ipp,  items = self.pagination(Item.objects.filter(group__id=group_id))
