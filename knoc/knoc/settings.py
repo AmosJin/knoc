@@ -8,10 +8,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
-import os
-
-from conf import *
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import os
 CURRENT_DIR = os.path.dirname(__file__)
 BASE_DIR = os.path.join(CURRENT_DIR, '..')
 
@@ -19,6 +17,15 @@ BASE_DIR = os.path.join(CURRENT_DIR, '..')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'rearearea7!s4#gmdku1=9jwnaera)(*^%$#@@@)p9^r967shcsi0fqb000$5*u'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+TEMPLATE_DEBUG = True
+
+ALLOWED_HOSTS = []
 
 
 REST_FRAMEWORK = {
@@ -64,7 +71,15 @@ ROOT_URLCONF = 'knoc.urls'
 WSGI_APPLICATION = 'knoc.wsgi.application'
 
 
+# Database
+# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/

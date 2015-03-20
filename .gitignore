@@ -31,3 +31,11 @@ login_aws.sh
 login_server.sh
 quotes.tsv
 static_versions.py
+
+# Python:
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+dist
+build
