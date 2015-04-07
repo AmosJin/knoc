@@ -10,10 +10,10 @@ class Group(models.Model):
     def __str__(self):
         return self.name
 
-
 class UserGroup(models.Model):
     user = models.ForeignKey(User)
     group = models.ForeignKey(Group)
+
     def __str__(self):
         return "{user_group.user.username}-{user_group.group.name}".format(user_group=self)
 
@@ -77,4 +77,3 @@ class Item(models.Model):
 
     def __str__(self):
         return self.item.title
-

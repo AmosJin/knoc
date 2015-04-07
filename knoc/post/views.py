@@ -4,7 +4,7 @@ from django.http import Http404
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, Context, loader
 
-from post.models import Item, Link, Note, Group, UserGroup
+from post.models import * 
 from post import core
 from post.forms import NoteForm, LinkForm
 

@@ -1,4 +1,0 @@
-requests
-lxml
-django-taggit
-djangorestframework==2.3.10
