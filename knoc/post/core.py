@@ -4,7 +4,6 @@ from lxml import etree
 from io import StringIO
 from urlparse import urlparse
 
-
 def update_item(instance, user_id, group_id, tags=""):
     from post.models import Item
     content_type = ContentType.objects.get_for_model(instance)

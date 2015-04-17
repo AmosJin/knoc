@@ -72,8 +72,8 @@ class Item(models.Model):
         unique_together = ('content_type','object_id')
 
     class Manifest:
-        excludes = ("content_type","author_id")
-        properties = ("item_type", "tag_list", "author_info")
+        excludes = ('content_type', 'author_id')
+        properties = ('item_type', 'tag_list', 'author_info')
 
     def __str__(self):
         return self.item.title

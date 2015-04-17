@@ -14,25 +14,22 @@
 		<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
     </head>
     <body>
-        <div class="main container">
+        <div class="container main">
             <div class="row">
                 <div class="col-md-2">
-                    <div class="top">
-                        <div class="row">
-                            <span class="col-md-4"></span>
-                            <span class="col-md-8">{{ request.user.username }}</span>
-                         </div>
-                     </div>
-                     <div class="menu">
-                         <div class="title">
+					<div class="row top">
+						<span class="col-md-4"></span>
+						<span class="col-md-8">{{ request.user.username }}</span>
+                    </div>
+                    <div class="menu">
+                        <div class="title">
                              {% trans "Groups" %}
-                         </div>
-                         <ul id="groups" class="nav nav-pills nav-stacked">
-                         </ul>
-                     </div>
+                        </div>
+                        <ul id="groups" class="nav nav-pills nav-stacked">
+                        </ul>
+                    </div>
                 </div>
-
-                <div class="content col-md-10">
+                <div class="col-md-10 content">
                     <div class="posts">
                     </div>
                 </div>

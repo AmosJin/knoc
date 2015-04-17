@@ -60,7 +60,7 @@ class ItemUpdateTest(BasicTest):
         user = self.user
         group = self.group
         link = Link(title="link title", description="some description", 
-                link="http://www.shanbay.com", image="http://qstatic.shanbay.com/static//img/logo2.png")
+                link="http://www.shanbay.com", image="http://qstatic.shanbay.com/static/img/logo2.png")
         link.save()
         item = core.update_item(link, user_id=user.pk, group_id=group.pk)
         self.assertEqual(item.object_id, link.pk)
