@@ -1,1 +1,10 @@
-[{"pk": 1, "model": "post.usergroup", "fields": {"group": 1, "user": 1}}]
+[
+	{
+		"pk": 1, 
+		"model": "post.usergroup", 
+		"fields": {
+			"group": 1, 
+			"user": 1
+			}
+	}
+]

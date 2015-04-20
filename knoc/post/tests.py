@@ -69,3 +69,7 @@ class ItemUpdateTest(BasicTest):
         link = Link.objects.get(id=1)
         item = core.update_item(link, user_id=self.user.pk, group_id=self.group.id)
         self.assertEqual(item.object_id, link.id)
+
+class APIViewTest(BasicTest):
+	def test(self):
+		pass
