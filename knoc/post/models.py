@@ -7,14 +7,14 @@ from taggit.managers import TaggableManager
 class Group(models.Model):
     name = models.CharField(max_length=20)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
 
 class UserGroup(models.Model):
     user = models.ForeignKey(User)
     group = models.ForeignKey(Group)
 
-    def __str__(self):
+    def __unicode__(self):
         return "{user_group.user.username}-{user_group.group.name}".format(user_group=self)
 
 class Link(models.Model):
@@ -23,7 +23,7 @@ class Link(models.Model):
     link = models.URLField()
     image = models.URLField(default="", blank=True)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.title
 
     @property
@@ -35,7 +35,7 @@ class Note(models.Model):
     summary = models.CharField(max_length=1024, default="")
     content = models.TextField(default="")
 
-    def __str__(self):
+    def __unicode__(self):
         return self.title
 
     @property
@@ -75,5 +75,5 @@ class Item(models.Model):
         excludes = ('content_type', 'author_id')
         properties = ('item_type', 'tag_list', 'author_info')
 
-    def __str__(self):
+    def __unicode__(self):
         return self.item.title

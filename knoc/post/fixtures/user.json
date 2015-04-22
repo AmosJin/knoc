@@ -1,19 +1,74 @@
 [
-    {
-		"pk": 1, 
-		"model": "auth.user", 
-      	"fields": {
-			"username": "samuel", 
-			"first_name": "", 
-			"last_name": "", 
-			"is_active": true, 
-			"is_superuser": true, 
-			"is_staff": true, 
-			"last_login": "2014-11-23T11:34:00Z", 
-			"groups": [], 
-			"user_permissions": [], 
-			"password": "pbkdf2_sha256$12000$dYRt3OUVmoDa$5oIXSmtieygVbfvOjhpw+LP1CzREHzMUotlbh2q00JU=", 
-			"email": "123@knoc.com", 
-			"date_joined": "2014-11-23T11:33:01Z"}
+{
+    "pk": 1, 
+    "model": "auth.user", 
+    "fields": {
+        "username": "jinchang", 
+        "first_name": "", 
+        "last_name": "", 
+        "is_active": true, 
+        "is_superuser": true, 
+        "is_staff": true, 
+        "last_login": "2015-04-10T12:14:49.176Z", 
+        "groups": [], 
+        "user_permissions": [], 
+        "password": "pbkdf2_sha256$12000$7XeNY4LOlF0t$HPYBGkxFESt/wXc6K6XXCo0siZZs39JMaM25f9Vm8Wk=", 
+        "email": "amosjin@icloud.com", 
+        "date_joined": "2015-03-22T07:59:32.152Z"
     }
+},
+{
+    "pk": 2, 
+    "model": "auth.user", 
+    "fields": {
+        "username": "test_user", 
+        "first_name": "Mike", 
+        "last_name": "Lee", 
+        "is_active": true, 
+        "is_superuser": false, 
+        "is_staff": false, 
+        "last_login": "2015-04-22T03:11:25Z", 
+        "groups": [], 
+        "user_permissions": [], 
+        "password": "pbkdf2_sha256$12000$fplpg0ipzVWo$eXcaYrVMCktdoUOE0GyWlk/Gz1D+zai9I3sdFEcGKjg=", 
+        "email": "mikelee@knoc.com", 
+        "date_joined": "2015-04-22T03:11:25Z"
+    }
+},
+{
+    "pk": 3, 
+    "model": "auth.user", 
+    "fields": {
+        "username": "test_staff", 
+        "first_name": "Jack", 
+        "last_name": "Chen", 
+        "is_active": true, 
+        "is_superuser": false, 
+        "is_staff": true, 
+        "last_login": "2015-04-22T03:13:20Z", 
+        "groups": [], 
+        "user_permissions": [], 
+        "password": "pbkdf2_sha256$12000$CYDd9sbWgSYd$R1JT+aGDqby4hD13Mkq/5va/jNRvCI48JfM1MfQidEg=", 
+        "email": "jackchen@knoc.com", 
+        "date_joined": "2015-04-22T03:13:20Z"
+    }
+},
+{
+    "pk": 4, 
+    "model": "auth.user", 
+    "fields": {
+        "username": "test_super", 
+        "first_name": "Super", 
+        "last_name": "King", 
+        "is_active": true, 
+        "is_superuser": true, 
+        "is_staff": true, 
+        "last_login": "2015-04-22T03:14:14Z", 
+        "groups": [], 
+        "user_permissions": [], 
+        "password": "pbkdf2_sha256$12000$SLXfB89EtHpr$afj8ZlzqB492IGLKO6cdhAsFY9uD3h+iOev6/pulrEU=", 
+        "email": "superking@knoc.com", 
+        "date_joined": "2015-04-22T03:14:14Z"
+    }
+}
 ]

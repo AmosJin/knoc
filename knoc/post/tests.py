@@ -1,5 +1,7 @@
 from django.test import TestCase
+from django.test.client import Client 
 from django.contrib.auth.models import User
+
 from post.models import Group, UserGroup, Link, Note
 from post import core
 
@@ -70,6 +72,18 @@ class ItemUpdateTest(BasicTest):
         item = core.update_item(link, user_id=self.user.pk, group_id=self.group.id)
         self.assertEqual(item.object_id, link.id)
 
-class APIViewTest(BasicTest):
-	def test(self):
-		pass
+class ApiViewTest(BasicTest):
+	def setUp(self):
+		self.client = Client()
+		self.client.login(username='test_user', password='1234567')
+
+	def test_group_view(self):
+		print 'testing group view...'
+		res = self.client.get('/api/post/group/')
+		self.assertEqual(len(res.data['data']), 4)
+
+	def test_link_view(self):
+		print 'testing link view...'
+		res = self.client.get('/api/post/link/')
+		self.assertEqual(len(res.data['data']), 4)
+
