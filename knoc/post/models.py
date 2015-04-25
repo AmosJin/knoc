@@ -68,12 +68,16 @@ class Item(models.Model):
     def tag_list(self):
         return self.tags.names()
 
+    @property
+    def tag_str(self):
+		return ','.join(self.tag_list)
+
     class Meta:
         unique_together = ('content_type','object_id')
 
     class Manifest:
         excludes = ('content_type', 'author_id')
-        properties = ('item_type', 'tag_list', 'author_info')
+        properties = ('item_type', 'tag_str', 'author_info')
 
     def __unicode__(self):
         return self.item.title

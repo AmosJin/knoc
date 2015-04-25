@@ -79,11 +79,19 @@ class ApiViewTest(BasicTest):
 
 	def test_group_view(self):
 		print 'testing group view...'
+		print 'testing group get method...'
 		res = self.client.get('/api/post/group/')
 		self.assertEqual(len(res.data['data']), 4)
 
-	def test_link_view(self):
+	def test_item_view(self):
+		print 'testing item view...'
+		print 'testing item get method...'
+		res = self.client.get('/api/post/item/1/')
+		self.assertEqual(len(res.data['data']), 4)
+
+	def est_link_view(self):
 		print 'testing link view...'
+		print 'testing group get method...'
 		res = self.client.get('/api/post/link/')
 		self.assertEqual(len(res.data['data']), 4)
 
