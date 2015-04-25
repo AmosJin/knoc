@@ -3,24 +3,6 @@
     "pk": 1, 
     "model": "auth.user", 
     "fields": {
-        "username": "jinchang", 
-        "first_name": "", 
-        "last_name": "", 
-        "is_active": true, 
-        "is_superuser": true, 
-        "is_staff": true, 
-        "last_login": "2015-04-10T12:14:49.176Z", 
-        "groups": [], 
-        "user_permissions": [], 
-        "password": "pbkdf2_sha256$12000$7XeNY4LOlF0t$HPYBGkxFESt/wXc6K6XXCo0siZZs39JMaM25f9Vm8Wk=", 
-        "email": "amosjin@icloud.com", 
-        "date_joined": "2015-03-22T07:59:32.152Z"
-    }
-},
-{
-    "pk": 2, 
-    "model": "auth.user", 
-    "fields": {
         "username": "test_user", 
         "first_name": "Mike", 
         "last_name": "Lee", 
@@ -36,7 +18,7 @@
     }
 },
 {
-    "pk": 3, 
+    "pk": 2, 
     "model": "auth.user", 
     "fields": {
         "username": "test_staff", 
@@ -54,7 +36,7 @@
     }
 },
 {
-    "pk": 4, 
+    "pk": 3, 
     "model": "auth.user", 
     "fields": {
         "username": "test_super", 
