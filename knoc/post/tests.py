@@ -94,8 +94,15 @@ class ApiViewTest(BasicTest):
 		assert_groups = set([data['name'] for data in res.data['data']])
 		self.assertEqual(groups, assert_groups)
 
-	def est_item_view(self):
+	def test_link_post(self):
+		pass
+
+	def test_item_view(self):
 		print 'testing item view...'
 		print 'testing item get method...'
-		res = self.client.get('/api/post/item/1/')
-		self.assertEqual(len(res.data['data']), 4)
+		res = self.client.get('/api/post/item/3/')
+		self.assertEqual(len(res.data['data']['items']), 1)
+		self.assertEqual(res.data['data']['items'][0]['title'], 'Writing your first patch for Django')
+		self.assertEqual(res.data['data']['items'][0]['item_type'], 'note')
+		author_info = {'username': 'test_user', 'id': 1}
+		self.assertEqual(res.data['data']['items'][0]['author_info'], author_info)
