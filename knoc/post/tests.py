@@ -94,9 +94,6 @@ class ApiViewTest(BasicTest):
 		assert_groups = set([data['name'] for data in res.data['data']])
 		self.assertEqual(groups, assert_groups)
 
-	def test_link_post(self):
-		pass
-
 	def test_item_view(self):
 		print 'testing item view...'
 		print 'testing item get method...'
@@ -106,3 +103,22 @@ class ApiViewTest(BasicTest):
 		self.assertEqual(res.data['data']['items'][0]['item_type'], 'note')
 		author_info = {'username': 'test_user', 'id': 1}
 		self.assertEqual(res.data['data']['items'][0]['author_info'], author_info)
+
+	def test_link_post(self):
+		pass
+
+	def test_note_post(self):
+		print 'testing note view...'
+		print 'testing note post...'
+		note_form = {
+				'title': 'note_test',
+				'summary': 'note summary',
+				'content': 'note content'
+				}
+		res = self.client.post('/api/post/note/1/', {})
+		self.assertEqual(res.data['status_code'], 1)
+		res = self.client.post('/api/post/note/1/', note_form)
+		self.assertEqual(res.data['status_code'], 0)
+		self.assertEqual(res.data['data']['title'], 'note_test')
+		self.assertEqual(res.data['data']['item_type'], 'note')
+		self.assertEqual(res.data['data']['author_info']['username'], 'test_user')
