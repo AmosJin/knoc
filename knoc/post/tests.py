@@ -129,8 +129,7 @@ class ApiViewTest(BasicTest):
 		res = self.client.post('/api/post/link/3/', link_data)
 		self.assertEqual(res.data['status_code'], 0)
 		self.assertEqual(res.data['data']['author_info']['username'], 'test_user')
-		links = Link.objects.all()
-		link = links[len(links)-1]
+		link = list(Link.objects.all())[-1]
 		self.assertEqual(link_data['link'], link.link)
 
 	def test_note_post(self):
