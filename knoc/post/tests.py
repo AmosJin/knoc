@@ -56,6 +56,22 @@ class LinkInfoTest(BasicTest):
 		self.assertEqual("title", data["title"])
 		self.assertEqual("description", data["description"])
 		self.assertEqual("http://qstatic.shanbay.com/static/img/landing_page_logo.png", data["image"])
+		# img url alter to "//qstatic.shanbay.com/..."
+		# this equals to "http://qstatic.shanbay.com/..."
+		content = """ 
+            <html>
+                <head>
+                    <title>title</title>
+                    <meta name="copyright" content="shanbay">
+                    <meta name="description" content="description">
+                </head>
+                <body>
+                    <div>some text</div>
+                    <img src="//qstatic.shanbay.com/static/img/landing_page_logo.png"/>
+                </body>
+            </html>
+			"""
+		self.assertEqual("http://qstatic.shanbay.com/static/img/landing_page_logo.png", data["image"])
 
 class ItemUpdateTest(BasicTest):
     def setUp(self):
