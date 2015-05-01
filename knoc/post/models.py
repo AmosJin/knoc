@@ -18,9 +18,9 @@ class UserGroup(models.Model):
         return "{user_group.user.username}-{user_group.group.name}".format(user_group=self)
 
 class Link(models.Model):
+    link = models.URLField()
     title = models.CharField(max_length=1024)
     description = models.TextField(default="", blank=True)
-    link = models.URLField()
     image = models.URLField(default="", blank=True)
 
     def __unicode__(self):

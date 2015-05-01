@@ -1,7 +1,7 @@
 # Knoc API Docs
 ***
 
-## POST API
+## POST APIs
 > POST APIs for Knoc, including create/get items apis, get groups apis.
 
 ### 获取小组列表
@@ -99,6 +99,41 @@
         "create_time": "2015-04-26T06:57:30.581Z",
         "group_id": "1",
         "id": 5,
+        "tag_str": ""
+    }
+}
+```
+
+### 生成Note记录
+* URL `/api/post/note/<group_id>/`
+* Method `POST`
+* Params
+
+```
+{
+ 	'tilte': '<note title>',
+ 	'summary': '<note summary>',
+ 	'content': '<note content>'
+}	
+```
+* Response
+
+```
+{
+    "msg": "SUCCESS",
+    "status_code": 0,
+    "data": {
+        "update_time": "2015-04-30T08:35:40.076Z",
+        "author_info": {
+            "username": "jinchang",
+            "id": 1
+        },
+        "title": "note title here",
+        "object_id": 4,
+        "item_type": "note",
+        "create_time": "2015-04-30T08:35:40.076Z",
+        "group_id": "3",
+        "id": 8,
         "tag_str": ""
     }
 }

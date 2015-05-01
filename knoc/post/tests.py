@@ -105,7 +105,17 @@ class ApiViewTest(BasicTest):
 		self.assertEqual(res.data['data']['items'][0]['author_info'], author_info)
 
 	def test_link_post(self):
-		pass
+		print 'testing link view...'
+		print 'testing link post method...'
+		link_data = {
+				'link': u'http://www.baidu.com/'
+				}
+		res = self.client.post('/api/post/link/3/', link_data)
+		self.assertEqual(res.data['status_code'], 0)
+		self.assertEqual(res.data['data']['author_info']['username'], 'test_user')
+		links = Link.objects.all()
+		link = links[len(links)-1]
+		self.assertEqual(link_data['link'], link.link)
 
 	def test_note_post(self):
 		print 'testing note view...'
