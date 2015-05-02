@@ -8,7 +8,6 @@ from post.models import *
 from post import core
 from post.forms import NoteForm, LinkForm
 
-
 @login_required
 def home(request):
     context = RequestContext(request, {"request": request})
