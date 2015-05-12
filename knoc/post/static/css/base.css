@@ -28,6 +28,8 @@
     display: -ms-flex;
     display: -moz-flex;
     display: flex;
+    height: 60px;
+    line-height: 60px;
   }
   .sidebar .info-head .cell {
     -webkit-flex: 1;
@@ -35,23 +37,29 @@
     -moz-flex: 1;
     flex: 1;
     text-align: center;
-    background: gray;
-    border-bottom: 1px solid #1c2f3e;
+    border-bottom: 1px solid #25323e;
+  }
+  .sidebar .info-head .cell:nth-child(2) {
+    border-left: 1px solid #25323e;
+    border-right: 1px solid #25323e;
   }
   .sidebar .info-head .cell > div {
-    padding: 15px;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
   }
   .sidebar .info-head .cell .brand {
-    display: inline-block;
     background: white;
     color: black;
     font-weight: bold;
-  }
-  .sidebar .info-head .cell .status {
-    border-left: 1px solid #1c2f3e;
-    border-right: 1px solid #1c2f3e;
+    border-radius: 4px;
   }
   .sidebar .info-head .cell .user-avatar {
+    color: black;
+  }
+  .sidebar .info-head .cell .user-avatar img {
+    width: 100%;
     border-radius: 50%;
   }
   .sidebar .divider {
@@ -80,35 +88,38 @@
   color: #67737c;
   font-size: 0.8em;
 }
-.nav-sidebar > .active > a,
-.nav-sidebar > .active:hover,
-.nav-sidebar > .active:focus {
+.nav-sidebar.groups li:hover a {
+  transition: 800ms;
+  bacground: gray;
+  color: black;
+}
+.nav-sidebar.groups > .active {
   color: #fff;
-  background-color: gray;
+  background-color: #3b464f;
 }
 .nav-sidebar.normal {
   margin-bottom: 0;
-  padding: 20px 0 20px 40px;
+  padding: 15px 0 15px 40px;
 }
 .nav-sidebar.normal.active,
 .nav-sidebar.normal:focus {
   color: #fff;
-  background-color: gray;
+  background-color: #3b464f;
 }
 .nav-sidebar.normal.activity {
-  font-size: 18px;
+  font-size: 14px;
 }
-.main {
-  padding: 20px;
+.nav-sidebar.normal.activity a {
+  color: white;
 }
-.main .page-header {
-  margin-top: 0;
+.nav-sidebar.normal.activity:hover {
+  background: white;
 }
-@media (min-width: 768px) {
-  .main {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
+.nav-sidebar.normal.activity:hover a {
+  text-decoration: none;
+  transition: 800ms;
+  bacground: gray;
+  color: black;
 }
 .placeholders {
   margin-bottom: 30px;
@@ -123,4 +134,122 @@
 .placeholder img {
   display: inline-block;
   border-radius: 50%;
+}
+.digest-list {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-right: 1px solid #dfdfdf;
+}
+.digest-list .header {
+  position: absolute;
+  right: 0;
+  left: 0;
+  background: #fff;
+  color: gray;
+  height: 60px;
+  line-height: 60px;
+  font-weight: bold;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+.digest-list .items {
+  position: absolute;
+  top: 60px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  overflow-y: auto;
+  background: #fafafa;
+  z-index: 1;
+}
+.digest-list .items .item {
+  display: -webkit-flex;
+  padding: 20px;
+  border-bottom: 1px solid #eeeeee;
+  cursor: pointer;
+}
+.digest-list .items .item:hover {
+  opacity: 0.8;
+}
+.digest-list .items .item.active {
+  background: #f1f1f1;
+}
+.digest-list .items .item .img {
+  -webkit-flex: 1 24px;
+  line-height: 80px;
+}
+.digest-list .items .item .img img {
+  width: 100%;
+  margin: auto 0;
+}
+.digest-list .items .item .main {
+  -webkit-flex: 8;
+  padding: 0 10px;
+}
+.digest-list .items .item .main .meta {
+  color: #97979f;
+}
+.digest-list .items .item .main .meta .usr {
+  font-size: 13px;
+}
+.digest-list .items .item .main .meta .time {
+  display: inline-block;
+  margin: 0 0 0 10px;
+  font-size: 11px;
+}
+.digest-list .items .item .main .meta .via {
+  display: inline-block;
+  margin: 0 6px 0 20px;
+  font-size: 11px;
+}
+.digest-list .items .item .main .meta .source {
+  font-size: 13px;
+  font-style: italic;
+}
+.content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-right: 1px solid #dfdfdf;
+}
+.content .header {
+  position: absolute;
+  right: 0;
+  left: 0;
+  background: #fff;
+  color: gray;
+  height: 60px;
+  line-height: 60px;
+  font-weight: bold;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+.content .main-content {
+  padding: 20px 10px;
+  position: absolute;
+  top: 60px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  overflow-y: auto;
+  background: #fafafa;
+  z-index: 1;
+  background: white;
+}
+.content .main-content .iframe {
+  margin: 20px 0 0;
+}
+.content .main-content .iframe iframe {
+  width: 100%;
+  height: 600px;
+}
+.content .empty {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url(/static/img/logo-bg.png) center center no-repeat white;
+  background-size: 80px;
 }

@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load i18n %}
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -61,28 +62,33 @@
 							<div class="brand">Knoc</div>
 						</div>
 						<div class="cell">
-							<div class="status">online</div>
+							<div class="status"><span class="glyphicon glyphicon-cog"></span></div>
 						</div>
 						<div class="cell">
-							<div class="user-avatar">C</div>
+							<div class="user-avatar">
+								<img alt="user avatar" src="{% static 'img/default-avatar.png' %}">
+							</div>
 						</div>
 					</div>
 					<div class="nav-sidebar normal compose">
 						<div class="btn-group">
-							<button type="button" class="btn btn-success btn-lg dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="glyphicon glyphicon-edit"></i> COMPOSE <span class="caret"></span>
+							<button type="button" class="btn btn-success btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								<i class="glyphicon glyphicon-edit"></i> COMPOSE <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">Link</a></li>
-								<li><a href="#">Note</a></li>
+								<li><a href="#"><span class="glyphicon glyphicon-link"></span> Link</a></li>
+								<li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Note</a></li>
 						  	</ul>
 						</div>
 					</div>
 					<div class="divider"></div>
 					<div class="nav-sidebar normal activity active">
-						<span class="glyphicon glyphicon-globe"></span> Activity
+						<a href="#">
+							<span class="glyphicon glyphicon-globe"></span> Activity
+						</a>
 					</div>
 					<div class="divider"></div>
-					<ul class="nav nav-sidebar">
+					<ul class="nav nav-sidebar groups">
 						<li><span class="caption">GROUPS</span></li>
 						<li><a href="#">Shanbay<span class="sr-only">(curent)</span></a></li>
 						<li><a href="#">Py</a></li>
@@ -90,10 +96,64 @@
 						<li><a href="#">iOS</a></li>
 					</ul>
 				</div>
-				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-					<h1 class="page-header">Content Here</h1>
-					{% block body %}
-					{% endblock body %}
+				<div class="col-sm-4 col-sm-offset-3 col-md-5 col-md-offset-2 digest-list">
+					<div class="header text-center">{% trans "Activity Lists" %}</div>
+					<div class="items">
+						<div class="item">
+							<div class="img">
+								<img alt="image des" src="{% static 'img/python.png' %}">
+							</div>
+							<div class="main">
+								<div class="meta">
+									<span class="usr">JinChang</span>
+									<span class="time">1 day</span>
+									<span class="via">via</span>
+									<span class="source">https://www.python.org</span>
+								</div>
+								<div class="title">
+									<h4>Python, quick development</h4>
+								</div>
+								<div clas="des">
+									Python is a widely used general-purpose, high-level programming... 
+								</div>
+							</div>
+						</div>
+						<div class="item active">
+							<div class="img">
+								<img alt="image des" src="{% static 'img/nginx.png' %}">
+							</div>
+							<div class="main">
+								<div class="meta">
+									<span class="usr">JinChang</span>
+									<span class="time">2 days</span>
+									<span class="via">via</span>
+									<span class="source">http://www.nginx.cn</span>
+								</div>
+								<div class="title">
+									<h4>Nginx, powerful & eficient Web Server</h4>
+								</div>
+								<div clas="des">
+									Nginx (pronounced "engine-x") is an open source reverse proxy server...
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-5 col-sm-offset-7 col-md-5 col-md-offset-7 content">
+					<div class="header text-center">Nginx, powerful & eficient Web Server</div>
+					<div class="main-content">
+						<blockquote>
+							<p>Nginx (pronounced "engine-x") is an open source reverse proxy server...</p>
+							<footer><a class="btn btn-link" href="http://www.nginx.cn">http://www.nginx.cn</a></footer>
+						</blockquote>
+						<div class="iframe">
+							<iframe src="http://wiki.nginx.org/NginxChs" sandbox="allow-same-origin allow-forms allow-same-origin allow-scripts allow-top-navigation" seamless="seamless">
+							</iframe>
+						</div>
+					</div>
+					<!--
+					<div class="empty"></div>
+					-->
 				</div>
 			</div>
 		</div>
