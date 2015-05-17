@@ -9,8 +9,8 @@ from post import core
 from post.forms import NoteForm, LinkForm
 
 @login_required
-def home(request):
+def index(request):
     context = RequestContext(request, {"request": request})
-    return render('post/home.html', context)
+    return render('post/index.html', context)
 
 
