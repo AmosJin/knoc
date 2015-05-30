@@ -244,6 +244,8 @@
 }
 
 .content {
+	overflow: hidden;
+	overflow-y: auto;
 	.content-position();
 	@border: 1px solid #dfdfdf;
 	border-right: @border;
@@ -268,5 +270,12 @@
 		height: 100%;
 		background: url(/static/img/logo-bg.png) center center no-repeat white;
 		background-size: 80px;
+	}
+	&.create-note {
+		padding: 0;
+	}
+	.simditor {
+		margin-top: 60px;
+		border: none;
 	}
 }

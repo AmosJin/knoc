@@ -13,6 +13,7 @@ urlpatterns = patterns(
     url(r'^group/$', group_view),
     url(r'^link/(?P<group_id>[\d]+)/$', link_view),
     url(r'^note/(?P<group_id>[\d]+)/$', note_view),
+    url(r'^items/$', items_view),
     url(r'^item/(?P<group_id>[\d]+)/$', item_view),
 )
 

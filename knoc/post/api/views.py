@@ -41,6 +41,14 @@ class ItemView(APIView):
         items = [self.serialize(item) for item in items]
         return SuccessResult(data={'total':total, 'ipp':ipp, 'items':items})
 
+class ItemsView(APIView):
+    http_method_name = ('get', )
+
+    def get(self, request):
+        total, ipp, items = self.pagination(Item.objects.all())
+        items = [self.serialize(item) for item in items]
+        return SuccessResult(data={'total':total, 'ipp':ipp, 'items':items})
+
 class LinkView(APIView):
     http_method_name = ('post')
 
