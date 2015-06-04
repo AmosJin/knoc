@@ -72,7 +72,6 @@ class LinkView(APIView):
             return FailedResult(msg=form.errors)
 
         item = core.update_item(link, user_id=user.pk, group_id=group_id)
-
         return Result(data=self.serialize(item))
 
 class NoteView(APIView):

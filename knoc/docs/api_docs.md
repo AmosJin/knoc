@@ -54,6 +54,7 @@
                     "id": 1
                 },
                 "title": "扇贝网，英语听说读写和词汇，我们都能帮到你 扇贝英语",
+				"image": "<image URL>",
                 "object_id": 2,
                 "item_type": "link",
                 "create_time": "2015-04-22T09:08:01.353Z",
@@ -78,10 +79,7 @@
 	link: '<URL>'
 }
 ```
-* Response
-
-	
-
+* Response	
 
 ```
 {

@@ -34,6 +34,7 @@ class Note(models.Model):
     title = models.CharField(max_length=1024)
     summary = models.CharField(max_length=1024, default="")
     content = models.TextField(default="")
+    image = models.URLField(default="", blank=True)
 
     def __unicode__(self):
         return self.title
@@ -70,18 +71,22 @@ class Item(models.Model):
 
     @property
     def tag_str(self):
-		return ','.join(self.tag_list)
+        return ','.join(self.tag_list)
 
     @property
     def title(self):
-		return self.item.title
+        return self.item.title
+
+    @property
+    def image(self):
+        return self.item.image 
 
     class Meta:
         unique_together = ('content_type','object_id')
 
     class Manifest:
         excludes = ('content_type', 'author_id')
-        properties = ('item_type', 'tag_str', 'author_info', 'title')
+        properties = ('item_type', 'tag_str', 'author_info', 'title', 'image')
 
     def __unicode__(self):
         return self.item.title
