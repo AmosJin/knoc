@@ -3,10 +3,15 @@
 <html>
     <head>
         <title> {% trans "Sharing Posts" %}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
-        <link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}"/>
-        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<meta name="author" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+		<meta name="renderer" content="webkit">
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
     </head>
     <body>
         <div class="main container">
@@ -31,7 +36,7 @@
                     <div class="posts">
                     </div>
                 </div>
-            </div>
+			</div>
         </div>
         <script id="item_link_tmpl" type="text/x-jquery-tmpl">
             <div class="item link">
@@ -59,10 +64,10 @@
                 </div>
             </div>
         </script>
-        <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
-        <script src="{% static 'js/underscore.min.js' %}"></script>
-        <script src="{% static 'js/backbone.js' %}"></script>
-        <script src="{% static 'js/bootstrap.min.js' %}"></script>
-        <script src="{% static 'js/post.js' %}"></script>
+		<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+		<script src="http://cdn.bootcss.com/underscore.js/1.8.3/underscore-min.js"></script>
+		<script src="http://cdn.bootcss.com/backbone.js/1.1.2/backbone-min.js"></script>
+		<script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="{% static 'scripts/post.js' %}"></script>
     </body>
 </html>
