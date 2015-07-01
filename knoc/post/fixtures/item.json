@@ -1,0 +1,38 @@
+[
+{
+    "pk": 1, 
+    "model": "post.item", 
+    "fields": {
+        "update_time": "2015-04-25T13:42:21.493Z", 
+        "group": 3, 
+        "author": 1, 
+        "object_id": 1, 
+        "create_time": "2015-04-06T04:49:41.499Z", 
+        "content_type": 4
+    }
+},
+{
+    "pk": 3, 
+    "model": "post.item", 
+    "fields": {
+        "update_time": "2015-04-25T13:43:14.545Z", 
+        "group": 4, 
+        "author": 2, 
+        "object_id": 1, 
+        "create_time": "2015-04-22T09:08:01.353Z", 
+        "content_type": 3
+    }
+},
+{
+    "pk": 4, 
+    "model": "post.item", 
+    "fields": {
+        "update_time": "2015-04-25T13:43:01.174Z", 
+        "group": 2, 
+        "author": 3, 
+        "object_id": 2, 
+        "create_time": "2015-04-25T08:31:42.167Z", 
+        "content_type": 3
+    }
+}
+]

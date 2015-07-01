@@ -23,7 +23,7 @@ class TestView(APIView):
     http_method_name = ('get',)
 
     def get(self, request):
-        link = Link.objects.all()[0]
+        link = Link.objects.all()
         data = self.serialize(link)
         return SuccessResult(data=data)
 
@@ -37,7 +37,15 @@ class ItemView(APIView):
     http_method_name = ('get', )
 
     def get(self, request, group_id):
-        total, ipp,  items = self.pagination(Item.objects.filter(group__id=group_id))
+        total, ipp, items = self.pagination(Item.objects.filter(group__id=group_id))
+        items = [self.serialize(item) for item in items]
+        return SuccessResult(data={'total':total, 'ipp':ipp, 'items':items})
+
+class ItemsView(APIView):
+    http_method_name = ('get', )
+
+    def get(self, request):
+        total, ipp, items = self.pagination(Item.objects.all())
         items = [self.serialize(item) for item in items]
         return SuccessResult(data={'total':total, 'ipp':ipp, 'items':items})
 
@@ -64,7 +72,6 @@ class LinkView(APIView):
             return FailedResult(msg=form.errors)
 
         item = core.update_item(link, user_id=user.pk, group_id=group_id)
-
         return Result(data=self.serialize(item))
 
 class NoteView(APIView):

@@ -1,0 +1,258 @@
+{% load staticfiles i18n %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- For some browsers use 'compatible mode', enable 'highspeed mode' -->
+		<meta name="renderer" content="webkit">
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="">
+        <title>{% block title %}{% endblock title %}</title>
+        {% block base_css %}
+            <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+            <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+            <!-- simditor style -->
+            <link rel="stylesheet" href="{% static 'css/simditor.css' %}">
+            <!-- CSS CDN
+    		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    		<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+            -->
+            <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        {% endblock base_css %}
+        {% block extra_css %}{% endblock extra_css %}
+        {% block js-head %}{% endblock js-head %}
+    </head>
+    <body>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-3 col-md-2 sidebar">
+					<div class="info-head">
+						<div class="cell">
+							<div class="brand">{% trans "Knoc" %}</div>
+						</div>
+						<div class="cell">
+							<div class="status"><span class="glyphicon glyphicon-cog"></span></div>
+						</div>
+						<div class="cell">
+							<div class="user-avatar">
+								<img alt="user avatar" src="{% static 'img/default-avatar.png' %}">
+							</div>
+						</div>
+					</div>
+					<div class="nav-sidebar normal compose">
+						<div class="btn-group">
+							<button type="button" class="btn btn-success btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								<i class="glyphicon glyphicon-edit"></i> {% trans "COMPOSE " %}<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li id="create-link"><a href="javascript:;"><span class="glyphicon glyphicon-link"></span> Link</a></li>
+								<li id="create-note"><a href="javascript:;"><span class="glyphicon glyphicon-list-alt"></span> Note</a></li>
+						  	</ul>
+						</div>
+					</div>
+					<div class="divider"></div>
+					<div class="nav-sidebar normal activity active">
+						<a href="#">
+							<span class="glyphicon glyphicon-globe"></span> {% trans "Activity" %}
+						</a>
+					</div>
+					<div class="divider"></div>
+					<ul class="nav nav-sidebar groups">
+					</ul>
+				</div>
+				<div class="col-sm-4 col-sm-offset-3 col-md-5 col-md-offset-2 digest-list">
+					<div class="header text-center">{% trans "Activity Lists" %}</div>
+						<div class="items">
+							<div class="item shanbay hide">
+								<div class="img">
+									<img alt="image des" src="http://qstatic.shanbay.com/static//img/logo3.png">
+								</div>
+								<div class="main">
+									<div class="meta">
+										<span class="usr">JinChang</span>
+										<span class="time">just now</span>
+										<span class="via">via</span>
+										<span class="source">http://www.shanbay.com/</span>
+									</div>
+									<div class="title">
+										<h4>扇贝网，英语听说读写和词汇，我们都能帮到你 扇贝英语</h4>
+									</div>
+									<div clas="des">
+										词汇：智能安排词汇复习和高效记忆法让你彻底摆脱边背边忘；阅读：在真实阅... 
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="img">
+									<img alt="image des" src="{% static 'img/python.png' %}">
+								</div>
+								<div class="main">
+									<div class="meta">
+										<span class="usr">JinChang</span>
+										<span class="time">1 day</span>
+										<span class="via">via</span>
+										<span class="source">https://www.python.org</span>
+									</div>
+									<div class="title">
+										<h4>Python, quick development</h4>
+									</div>
+									<div clas="des">
+										Python is a widely used general-purpose, high-level programming... 
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="img">
+									<img alt="image des" src="{% static 'img/nginx.png' %}">
+								</div>
+								<div class="main">
+									<div class="meta">
+										<span class="usr">JinChang</span>
+										<span class="time">2 days</span>
+										<span class="via">via</span>
+										<span class="source">http://www.nginx.cn</span>
+									</div>
+									<div class="title">
+										<h4>Nginx, powerful & eficient Web Server</h4>
+									</div>
+									<div clas="des">
+										Nginx (pronounced "engine-x") is an open source reverse proxy server...
+									</div>
+								</div>
+							</div>
+						</div>
+				</div>
+				<div class="col-sm-5 col-sm-offset-7 col-md-5 col-md-offset-7 content create-note">
+					<div class="header text-center ngnix hide">Nginx, powerful & eficient Web Server</div>
+					<div class="header text-center shanbay-web hide">扇贝网，英语听说读写和词汇...</div>
+					<div class="header text-center create-note-item hide">Create Note<button class="btn btn-success pull-right" style="margin-right:20px;margin-top:10px;">POST</button></div>
+					<div class="create-note-item hide">
+						<textarea id="editor" placeholder="这里输入内容" autofocus></textarea>
+					</div>
+					<div class="main-content ngnix hide">
+						<blockquote>
+							<p>Nginx (pronounced "engine-x") is an open source reverse proxy server...</p>
+							<footer><a class="btn btn-link" href="http://www.nginx.cn" target="_blank">http://www.nginx.cn</a></footer>
+						</blockquote>
+						<div class="iframe">
+							<iframe src="http://wiki.nginx.org/NginxChs" sandbox="allow-same-origin allow-forms allow-same-origin allow-scripts allow-top-navigation" seamless="seamless">
+							</iframe>
+						</div>
+					</div>
+					<div class="main-content shanbay-web hide">
+						<blockquote>
+							<p>词汇：智能安排词汇复习和高效记忆法让你彻底摆脱边背边忘；阅读：在真实阅读环境里激活词汇，即点即查；听力：逐句播放加听写，练到听懂为止；写作：从易到难，从短语到句型，想些什么就写什么；口语：5000多英美配音的典型例句，一句一句训练你，三个月脱口而出</p>
+							<footer><a class="btn btn-link" href="http://www.shanbay.com/" target="_blank">http://www.shanbay.com/</a></footer>
+						</blockquote>
+						<div class="iframe">
+							<iframe src="http://www.shanbay.com/" sandbox="allow-same-origin allow-forms allow-same-origin allow-scripts allow-top-navigation" seamless="seamless">
+							</iframe>
+						</div>
+					</div>
+					<div class="empty"></div>
+				</div>
+			</div>
+		</div>
+
+		<div id="create-link-modal"class="modal fade">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title text-center">Create Link</h4>
+		      </div>
+		      <div class="modal-body">
+		      	<input type="text" class="form-control" placeholder="Enter link here..." style="border:none;box-shadow:none">
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
+		        <button type="button" class="btn btn-success" id="post-link">POST</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+		<div id="create-note-modal"class="modal fade">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title text-center">Create Note</h4>
+		      </div>
+		      <div class="modal-body">
+		      	<textarea id="editor" placeholder="这里输入内容" autofocus></textarea>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-success">Post</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+		<script id="groups-tmpl" type="text/x-jquery-tmpl">
+			<li><span class="caption">GROUPS</span></li>
+			{% verbatim %}
+			{{each(i, group) groups}}
+			{% endverbatim %}
+				<li><a href="javascript:;" data=${group.id}>${group.name}</a></li>
+			{% verbatim %}
+			{{/each}}
+			{% endverbatim %}
+		</script>
+
+		<script id="activity-item-tmpl" type="text/x-jquery-tmpl">
+			{% verbatim %}
+			{{each(i, item) items}}
+			{% endverbatim %}
+				<div class="item">
+					<div class="img">
+						<img alt="image des" src="{% static 'img/python.png' %}">
+					</div>
+					<div class="main">
+						<div class="meta">
+							<span class="usr">JinChang</span>
+							<span class="time">1 day</span>
+							<span class="via">via</span>
+							<span class="source">https://www.python.org</span>
+						</div>
+						<div class="title">
+							<h4>Python, quick development</h4>
+						</div>
+						<div clas="des">
+							Python is a widely used general-purpose, high-level programming... 
+						</div>
+					</div>
+				</div>
+			{% verbatim %}
+			{{/each}}
+			{% endverbatim %}
+		</script>
+ 
+        {% block base_js %}
+            <!-- JS CDN
+    		<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    		<script src="http://cdn.bootcss.com/underscore.js/1.8.3/underscore-min.js"></script>
+    		<script src="http://cdn.bootcss.com/backbone.js/1.1.2/backbone-min.js"></script>
+    		<script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+            -->
+			<script src="{% static 'js/jquery.min.js' %}"></script>
+			<script src="{% static 'js/jquery.tmpl.min.js' %}"></script>
+			<script src="{% static 'js/underscore-min.js' %}"></script>
+			<script src="{% static 'js/backbone-min.js' %}"></script>
+			<script src="{% static 'js/bootstrap.min.js' %}"></script>
+			<!-- simditor plugin js -->
+			<script src="{% static 'js/module.js' %}"></script>
+			<script src="{% static 'js/hotkeys.js' %}"></script>
+			<script src="{% static 'js/uploader.js' %}"></script>
+			<script src="{% static 'js/simditor.js' %}"></script>
+			<!-- base js -->
+			<script src="{% static 'js/base.js' %}"></script>
+        {% endblock base_js %}
+        {% block extra_js %}{% endblock extra_js %}
+    </body>
+</html>

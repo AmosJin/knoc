@@ -6,8 +6,6 @@
 *.compress.less
 *.compress.js
 *.compress.css
-*.*.css
-*.*.js
 
 # emacs
 *~

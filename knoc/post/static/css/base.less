@@ -1,0 +1,281 @@
+.sub-header {
+	padding-bottom: 10px;
+	border-bottom: 1px solid #eee;
+}
+
+.navbar-fixed-top {
+	border: 0;
+}
+
+.sidebar {
+	display: none;
+}
+
+@media (min-width: 768px) {
+	.sidebar {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 1000;
+		display: block;
+		padding: 0;
+		overflow-x: hidden;
+		overflow-y: auto;
+		background-color: #061723;
+		color: white;
+		border-right: 1px solid #eee;
+		.info-head {
+			display: -webkit-flex;
+			display: -ms-flex;
+			display: -moz-flex;
+			display: flex;
+			@height: 60px;
+			height: @height;
+			line-height: @height;
+			.cell {
+				-webkit-flex: 1;
+				-ms-flex: 1;
+				-moz-flex: 1;
+				flex: 1;
+				text-align: center;
+				@border: 1px solid #25323e;
+				border-bottom: @border;
+				&:nth-child(2) {
+					border-left: @border;
+					border-right: @border;
+				}
+				>div {
+					display: inline-block;
+					@size: 40px;
+					width: @size;
+					height: @size;
+					line-height: @size;
+				}
+				.brand {
+					background: white;
+					color: black;
+					font-weight: bold;
+					border-radius: 4px;
+				}
+				.status {
+				}
+				.user-avatar {
+					color: black;
+					img {
+						width: 100%;
+						border-radius: 50%;
+					}
+				}
+			}
+		}
+		.divider {
+			border-top: 1px solid #1c2f3e;
+		}
+	}
+}
+
+.nav-sidebar {
+	margin-right: -21px;
+	margin-bottom: 20px;
+	margin-left: -20px;
+	padding: 20px;
+	&:first-of-type {
+		padding-top: 0;
+	}
+	>li {
+		>a, .caption {
+			@padding: 20px;
+			color: white;
+			padding-left: @padding;
+			padding-right: @padding;
+		}
+		.caption {
+			display: inline-block;
+			@padding: 10px;
+			padding-top: @padding;
+			padding-bottom: @padding;
+			color: #67737c;
+			font-size: 0.8em;
+		}
+	}
+	.active-focus() {
+		color: #fff;
+		background-color: #3b464f;
+	}
+	.hover() {
+		transition: 800ms;
+		bacground: gray;
+		color: black;
+	}
+	&.groups {
+		li {
+			&:hover {
+				a {
+					.hover();
+				}
+			}
+		}
+		>.active {
+			.active-focus();
+		}
+	}
+	&.normal {
+		margin-bottom: 0;
+		padding: 15px 0 15px 40px;
+		&.active, &:focus {
+			.active-focus();
+		}
+		&.activity {
+			font-size: 14px;
+			a {
+				color: white;
+			}
+			&:hover {
+				background: white;
+				a {
+					text-decoration: none;
+					.hover();
+				}
+			}
+		}
+	}
+}
+
+.placeholders {
+	margin-bottom: 30px;
+	text-align: center;
+	h4 { margin-bottom: 0 }
+}
+
+.placeholder {
+	margin-top: 20px;
+	img {
+		display: inline-block;
+		border-radius: 50%;
+	}
+}
+
+.content-position() {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+}
+
+@header-height: 60px;
+
+.header() {
+	position: absolute;
+	right: 0;
+	left: 0;
+	background: #fff;
+	color: gray;
+	height: @header-height;
+	line-height: @header-height;
+	font-weight: bold;
+	box-shadow: 0 0 2px rgba(0,0,0,0.2);
+	z-index: 2;
+}
+
+.main-area() {
+	position: absolute;
+	top: @header-height;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	overflow: hidden;
+	overflow-y: auto;
+	background: #fafafa;
+	z-index: 1;
+}
+
+.digest-list {
+	.content-position();
+	@border: 1px solid #dfdfdf;
+	border-right: @border;
+	.header {
+		.header();
+	}
+	.items {
+		.main-area();
+		.item {
+			display: -webkit-flex;
+			padding: 20px;
+			border-bottom: 1px solid #eeeeee;
+			cursor: pointer;
+			&:hover { opacity: .8 }
+			&.active {
+				background:	#f1f1f1;
+			}
+			.img {
+				-webkit-flex: 1 24px;
+				line-height: 80px;
+				img {
+					width: 100%;
+					margin: auto 0;
+				}
+			}
+			.main {
+				-webkit-flex: 8;
+				padding: 0 10px;
+				.meta {
+					color: #97979f;
+					.usr {
+						font-size: 13px;
+					}
+					.time {
+						display: inline-block;
+						margin: 0 0 0 10px;
+						font-size: 11px;
+					}
+					.via {
+						display: inline-block;
+						margin: 0 6px 0 20px;
+						font-size: 11px;
+					}
+					.source {
+						font-size: 13px;
+						font-style: italic;
+					}
+				}
+			}
+		}
+	}
+}
+
+.content {
+	overflow: hidden;
+	overflow-y: auto;
+	.content-position();
+	@border: 1px solid #dfdfdf;
+	border-right: @border;
+	.header {
+		.header();
+	}
+	.main-content {
+		padding: 20px 10px;
+		.main-area();
+		background: white;
+		.iframe {
+			margin: 20px 0 0;
+			iframe {
+				width: 100%;
+				height: 600px;
+			}
+		}
+	}
+	.empty {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: url(/static/img/logo-bg.png) center center no-repeat white;
+		background-size: 80px;
+	}
+	&.create-note {
+		padding: 0;
+	}
+	.simditor {
+		margin-top: 60px;
+		border: none;
+	}
+}

@@ -1,0 +1,57 @@
+{% extends "post/base.html" %}
+{% load staticfiles i18n %}
+
+{% block title %}
+    {% trans "Knoc-Sharing links & notes " %}
+{% endblock title %}
+
+{% block body %}
+	<div class="row">
+		<div class="col-md-2">
+			<div class="row top">
+				<span class="col-md-4"></span>
+				<span class="col-md-8">{{ request.user.username }}</span>
+			</div>
+			<div class="menu">
+				<div class="title">
+					 {% trans "Groups" %}
+				</div>
+				<ul id="groups" class="nav nav-pills nav-stacked">
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-10 contents">
+			<div class="posts">
+			</div>
+		</div>
+	</div>
+    <script id="item_link_tmpl" type="text/x-jquery-tmpl">
+        <div class="item link">
+            <a href="${item.link}">${item.tile}</a>
+        </div>
+        <div class="summary">
+            ${item.description}
+        </div>
+        <div class="info">
+            <div class="row">
+                <span class="col-md-2">${item.author.name} </span>
+                <span class="col-md-2">${item.create_time} </span>
+            </div>
+        </div>
+    </script>
+    <script id="item_note_tmpl" type="text/x-jquery-tmpl">
+        <div class="item link"> ${item.tile}</div>
+        <div class="summary">
+            ${item.summary}
+        </div>
+        <div class="info">
+            <div class="row">
+                <span class="col-md-2">${item.author.name} </span>
+                <span class="col-md-2">${item.create_time} </span>
+            </div>
+        </div>
+    </script>
+{% endblock %}
+
+{% block extra_js %}
+{% endblock extra_js %}

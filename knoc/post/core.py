@@ -4,7 +4,6 @@ from lxml import etree
 from io import StringIO
 from urlparse import urlparse
 
-
 def update_item(instance, user_id, group_id, tags=""):
     from post.models import Item
     content_type = ContentType.objects.get_for_model(instance)
@@ -50,16 +49,19 @@ def get_link_info(link, content, encoding="utf8"):
             description = meta.get("content")
     data = {"title":title, "description":description}
     for image in tree.iter(tag="img"):
-        image = image.get('src')
-        if image.startswith("/"):
-            domain = get_url_domain(link)
-            if domain.endswith("/"):
-                domain = domain[:-1]
-            image = domain + image
-        if not image.startswith("http"):
-            image = "".join([link, image])
-        data["image"] =  image
-        break
+		image = image.get('src')
+		if image.startswith("/"):
+			if image.startswith("//"):
+				image = image
+			else:
+				domain = get_url_domain(link)
+				if domain.endswith("/"):
+					domain = domain[:-1]
+				image = domain + image
+		if not image.startswith("http") and not image.startswith("//"):
+			image = "".join([link, image])
+		data["image"] =  image
+		break
     data["link"] = link
     return data
 

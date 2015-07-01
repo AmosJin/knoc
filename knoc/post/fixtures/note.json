@@ -1,1 +1,11 @@
-[{"pk": 1, "model": "post.note", "fields": {"content": "note content", "summary": "note summary", "title": "note1"}}]
+[
+{
+    "pk": 1, 
+    "model": "post.note", 
+    "fields": {
+        "content": "Contributing back to Django itself is the best way to see your own concerns addressed. This may seem daunting at first, but it\u2019s really pretty simple. We\u2019ll walk you through the entire process, so you can learn by example.", 
+        "summary": "Interested in giving back to the community a little? Maybe you\u2019ve found a bug in Django that you\u2019d like to see fixed, or maybe there\u2019s a small feature you want added.", 
+        "title": "Writing your first patch for Django"
+    }
+}
+]

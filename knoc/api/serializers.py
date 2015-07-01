@@ -92,5 +92,3 @@ class Serializer(object):
             self._data = self.to_native(obj)
 
         return self._data
-            
-        
